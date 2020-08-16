@@ -47,10 +47,14 @@ public struct SemanticVersion: Hashable {
         self.buildMetadataIdentifiers = buildMetadataIdentifiers
     }
 
-    /// Create a semantic version by parsing a string in the semver format.
+    /// Create a semantic version from a provided string, parsing it according to spec.
     ///
-    /// - Returns: `nil` if the provided string is not a valid semantic version
+    /// - Returns: `nil` if the provided string is not a valid semantic version.
+    ///
+    /// - TODO: Possibly throw more specific validation errors? Would this be useful?
     public init?(string: String) {
+        guard string.firstIndex(where: { !$0.isASCII }) == nil else { return nil }
+        
         let prereleaseStartIndex = string.firstIndex(of: "-")
         let metadataStartIndex = string.firstIndex(of: "+")
         
