@@ -1,3 +1,16 @@
+//===----------------------------------------------------------------------===//
+//
+// This source file is part of the semver-cli open source project
+//
+// Copyright (c) Gwynne Raskind
+// Licensed under the MIT license
+//
+// See LICENSE.txt for license information
+//
+// SPDX-License-Identifier: MIT
+//
+//===----------------------------------------------------------------------===//
+
 /// An arbitrary semantic version number, represented as its individual components. This type adheres to the format and
 /// behaviors specified by [Semantic Versioning 2.0.0][semver2]. This is the same versioning format used by the Swift
 /// Package Manager, and some of this implementation was informed by the one found in SPM. A short summary of the
