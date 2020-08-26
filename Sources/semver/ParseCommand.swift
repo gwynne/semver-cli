@@ -12,6 +12,7 @@
 //===----------------------------------------------------------------------===//
 import ArgumentParser
 import Foundation
+import SwiftSemver
 
 struct ParseCommand: ParsableCommand {
     static var configuration = CommandConfiguration(commandName: "parse")

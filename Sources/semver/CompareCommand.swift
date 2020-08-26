@@ -11,6 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 import ArgumentParser
+import SwiftSemver
 
 struct CompareCommand: ParsableCommand {
     static var configuration = CommandConfiguration(commandName: "compare")
