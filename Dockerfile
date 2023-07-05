@@ -11,13 +11,12 @@
 #
 #===----------------------------------------------------------------------===//
 
-FROM swift:5.2-focal AS build
+FROM swift:5.8-jammy AS build
 WORKDIR /build
 COPY . .
-RUN swift build --enable-test-discovery -c release
+RUN swift build -c release --static-swift-stdlib
 
-FROM swift:5.2-focal-slim
+FROM ubuntu:jammy
 COPY --from=build /build/.build/release/semver /usr/bin
 ENTRYPOINT ["/usr/bin/semver"]
 CMD ["--help"]
-
