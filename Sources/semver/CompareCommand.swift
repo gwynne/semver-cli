@@ -110,41 +110,44 @@ struct CompareCommand: ParsableCommand {
             case .silent:
                 break
             case .verbose:
-                print("\(leftVersion) was compared as if it were \"\(compareLeftVersion)\".")
-                print("\(rightVersion) was compared as if it were \"\(compareRightVersion)\"")
-                print("The comparsion operation was \"\(operation.verboseDescription)?\"")
-                print("The result was: \(result ? "yes" : "no").")
+                print("""
+                    \(leftVersion) was compared as if it were "\(compareLeftVersion)".
+                    \(rightVersion) was compared as if it were "\(compareRightVersion)"
+                    The comparsion operation was "\(operation.verboseDescription)?"
+                    The result was: \(result ? "yes" : "no").
+                    """
+                )
             case .debug:
-                print("Parsed components of left version:")
-                print("\tMajor: \(leftVersion.major)")
-                print("\tMinor: \(leftVersion.minor)")
-                print("\tPatch: \(leftVersion.patch)")
-                print("\tPrerelease identifiers: [\(leftVersion.prereleaseIdentifiers.joined(separator: ", "))]")
-                print("\tBuild metadata identifiers: [\(leftVersion.buildMetadataIdentifiers.joined(separator: ", "))]")
-                print()
-                print("Parsed components of right version:")
-                print("\tMajor: \(rightVersion.major)")
-                print("\tMinor: \(rightVersion.minor)")
-                print("\tPatch: \(rightVersion.patch)")
-                print("\tPrerelease identifiers: [\(rightVersion.prereleaseIdentifiers.joined(separator: ", "))]")
-                print("\tBuild metadata identifiers: [\(rightVersion.buildMetadataIdentifiers.joined(separator: ", "))]")
-                print()
-                print("Identifier components of left version as compared according to chosen mode and operation:")
-                print("\tPrerelease identifiers: [\(compareLeftVersion.prereleaseIdentifiers.joined(separator: ", "))]")
-                print("\tBuild metadata identifiers: [\(compareLeftVersion.buildMetadataIdentifiers.joined(separator: ", "))]")
-                print()
-                print("Identifier components of right version as compared according to chosen mode and operation:")
-                print("\tPrerelease identifiers: [\(compareRightVersion.prereleaseIdentifiers.joined(separator: ", "))]")
-                print("\tBuild metadata identifiers: [\(compareRightVersion.buildMetadataIdentifiers.joined(separator: ", "))]")
-                print()
-                if [leftVersion.major, leftVersion.minor, leftVersion.patch] != [rightVersion.major, rightVersion.minor, rightVersion.patch] {
-                    print("The comparison did not depend on any identifiers.")
-                } else {
-                    // TODO: More debug stuff. This part is where it would actually be interesting anyway...
-                }
-                print()
-                print("The comparsion operation was \"\(operation.verboseDescription)?\"")
-                print("The result was: \(result ? "yes" : "no").")
+                print("""
+                    Parsed components of left version:
+                    \tMajor: \(leftVersion.major)
+                    \tMinor: \(leftVersion.minor)
+                    \tPatch: \(leftVersion.patch)
+                    \tPrerelease identifiers: [\(leftVersion.prereleaseIdentifiers.joined(separator: ", "))]
+                    \tBuild metadata identifiers: [\(leftVersion.buildMetadataIdentifiers.joined(separator: ", "))]
+                    
+                    Parsed components of right version:
+                    \tMajor: \(rightVersion.major)
+                    \tMinor: \(rightVersion.minor)
+                    \tPatch: \(rightVersion.patch)
+                    \tPrerelease identifiers: [\(rightVersion.prereleaseIdentifiers.joined(separator: ", "))]
+                    \tBuild metadata identifiers: [\(rightVersion.buildMetadataIdentifiers.joined(separator: ", "))]
+                    
+                    Identifier components of left version as compared according to chosen mode and operation:
+                    \tPrerelease identifiers: [\(compareLeftVersion.prereleaseIdentifiers.joined(separator: ", "))]
+                    \tBuild metadata identifiers: [\(compareLeftVersion.buildMetadataIdentifiers.joined(separator: ", "))]
+                    
+                    Identifier components of right version as compared according to chosen mode and operation:
+                    \tPrerelease identifiers: [\(compareRightVersion.prereleaseIdentifiers.joined(separator: ", "))]
+                    \tBuild metadata identifiers: [\(compareRightVersion.buildMetadataIdentifiers.joined(separator: ", "))]
+                    
+                    \([leftVersion.major, leftVersion.minor, leftVersion.patch] != [rightVersion.major, rightVersion.minor, rightVersion.patch] ? "The comparison did not depend on any identifiers." : "")
+
+                    The comparsion operation was "\(operation.verboseDescription)?"
+                    The result was: \(result ? "yes" : "no").
+                    """
+                )
+                // TODO: More debug stuff. This part is where it would actually be interesting anyway...
         }
         throw result ? ExitCode.success : ExitCode.failure
     }
