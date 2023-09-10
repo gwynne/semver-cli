@@ -1,25 +1,23 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "swift-argument-parser",
-        "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
-        "state": {
-          "branch": null,
-          "revision": "15351c1cd009eba0b6e438bfef55ea9847a8dc4a",
-          "version": "0.3.0"
-        }
-      },
-      {
-        "package": "swift-semver",
-        "repositoryURL": "https://github.com/gwynne/swift-semver.git",
-        "state": {
-          "branch": null,
-          "revision": "63318f15005d9ff2255cea7aa882c784364118ca",
-          "version": "0.1.0-alpha.2"
-        }
+  "pins" : [
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "revision" : "8f4d2753f0e4778c76d5f05ad16c74f707390531",
+        "version" : "1.2.3"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "swift-semver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gwynne/swift-semver.git",
+      "state" : {
+        "revision" : "2be090a869475ce818a8ecc17093505485e3ccb8",
+        "version" : "0.2.0-alpha.1"
+      }
+    }
+  ],
+  "version" : 2
 }

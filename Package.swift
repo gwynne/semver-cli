@@ -1,4 +1,4 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.7
 //===----------------------------------------------------------------------===//
 //
 // This source file is part of the semver-cli open source project
@@ -19,11 +19,11 @@ let package = Package(
         .executable(name: "semver", targets: ["semver"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "0.2.2"),
-        .package(url: "https://github.com/gwynne/swift-semver.git", from: "0.1.0-alpha"),
+        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.0.0"),
+        .package(url: "https://github.com/gwynne/swift-semver.git", from: "0.2.0-alpha"),
     ],
     targets: [
-        .target(name: "semver", dependencies: [
+        .executableTarget(name: "semver", dependencies: [
             .product(name: "ArgumentParser", package: "swift-argument-parser"),
             .product(name: "SwiftSemver", package: "swift-semver"),
         ]),

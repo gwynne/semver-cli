@@ -44,7 +44,7 @@ struct CompareCommand: ParsableCommand {
     
     @Flag(
         name: [.customShort("r"), .customLong("reverse"), .customLong("invert")],
-        help: .init(abstract: "Invert the comparison result.", discussion: """
+        help: .init("Invert the comparison result.", discussion: """
             This is equivalent to switching the order of the arguments in most cases.
             If the two versions provided are equal, the result will not change.
             """)
@@ -253,7 +253,7 @@ enum CompareOperatorMode: CaseIterable, EnumerableFlag, Equatable {
         switch value {
         
         case .traditional: return .init(
-            abstract: "Ignore prerelease identifiers and build metadata when comparing version numbers",
+            "Ignore prerelease identifiers and build metadata when comparing version numbers",
             discussion: """
                 Comparisons in traditional mode have semantics roughly similar
                 to those of `sort -V`; the required three numeric components
@@ -263,7 +263,7 @@ enum CompareOperatorMode: CaseIterable, EnumerableFlag, Equatable {
         )
         
         case .precedence: return .init(
-            abstract: "Use the semver 2.0.0 precedence algorithm for comparing version numbers",
+            "Use the semver 2.0.0 precedence algorithm for comparing version numbers",
             discussion: """
                 The default mode. This option exists primarily to allow canceling
                 out any of the other mode options and explicitly specifying the
@@ -272,7 +272,7 @@ enum CompareOperatorMode: CaseIterable, EnumerableFlag, Equatable {
         )
         
         case .strictEquality: return .init(
-            abstract: "Respect build metadata identifers when determining equality of versions",
+            "Respect build metadata identifers when determining equality of versions",
             discussion: """
                 In this mode, the == and != operators will consider build metadata
                 significant. All other operators use the precedence algorithm.
@@ -280,7 +280,7 @@ enum CompareOperatorMode: CaseIterable, EnumerableFlag, Equatable {
         )
         
         case .strictComparison: return .init(
-            abstract: "Respect build metadata identifiers for all version number comparisons",
+            "Respect build metadata identifiers for all version number comparisons",
             discussion: """
                 When build metadata identifiers are present, they are compared as
                 strings, using the same rules as for string prerelease identifiers.
@@ -315,7 +315,7 @@ enum CompareOutputBehavior: CaseIterable, EnumerableFlag {
         switch value {
 
         case .normal: return .init(
-            abstract: "Show the result of the comparison.",
+            "Show the result of the comparison.",
             discussion: """
                 This is the default behavior. This option exists primarily to provide a
                 means to cancel the effects of the -s, -v, and --debug options, and
@@ -323,21 +323,21 @@ enum CompareOutputBehavior: CaseIterable, EnumerableFlag {
                 """)
 
         case .silent: return .init(
-            abstract: "Silent or quiet mode. Suppresses all output.",
+            "Silent or quiet mode. Suppresses all output.",
             discussion: """
                 Consult the process exit status for the result of the comparison. This
                 option overrides --show-result, -v, and --debug if specified last.
                 """)
         
         case .verbose: return .init(
-            abstract: "Outputs additional information about the comparison.",
+            "Outputs additional information about the comparison.",
             discussion: """
                 Useful for seeing what logic is used to decide the result of any given
                 comparison. This option overrides both -s and --debug if specified last.
                 """)
         
         case .debug: return .init(
-            abstract: "Enables lots of debug logging about every aspect of a comparison.",
+            "Enables lots of debug logging about every aspect of a comparison.",
             discussion: """
                 Unless you're either debugging this tool or very curious about what's
                 going on inside it, this is probably not useful to you. Overrides
